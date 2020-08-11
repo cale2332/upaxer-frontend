@@ -1,0 +1,10 @@
+{
+    "Login":"Entrar",
+    "Sitetitle": "Angular",
+    "UserName": "Nombre",
+    "NameError": "Estas seguuro de que es el nombre",
+    "Email": "Correo Electronico",
+    "Password": "Contrasenia",
+    "Submit": "Entrar",
+    "Profile":"Perfil"
+}

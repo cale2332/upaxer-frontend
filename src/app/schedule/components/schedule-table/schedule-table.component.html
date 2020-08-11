@@ -1,0 +1,35 @@
+
+<mat-toolbar color="primary">
+  <span class="fill-remaining-space"></span>
+  <span><button  mat-button (click)="newRow()">Nuevo</button></span>
+</mat-toolbar>
+
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell  *matHeaderCellDef [ngStyle]="{'width': column =='select' ? '10%' : getValueByFieldName(column, 'width') }"> {{getValueByFieldName(column, 'label')}} 
+      <mat-checkbox *ngIf="column=='select'" (change)="$event ? masterToggle() : null"
+                    [checked]="selection.hasValue() && isAllSelected()"
+                    [indeterminate]="selection.hasValue() && !isAllSelected()">
+      </mat-checkbox>
+    </th>
+    <td mat-cell *matCellDef="let element; let row;" [ngStyle]="{'color': row === selected  ? 'white' : 'black'}"> {{setTemplateByColumn(element, column)}}  
+
+      <mat-checkbox *ngIf="column=='select'" (click)="$event.stopPropagation()"
+                    (change)="$event ? selection.toggle(row) : null"
+                    [checked]="selection.isSelected(row)"
+                    [ngStyle]="{'color': row === selected  ? 'white' : 'black'}">
+      </mat-checkbox>
+
+      
+      <button *ngIf="column=='actions'" focusable="false" mat-icon-button color="primary" (click)="selectedRow(row)">Editar</button>&nbsp;
+      <button *ngIf="column=='actions'" focusable="false" mat-icon-button color="primary" (click)="deleteRow(row)">Borrar</button>
+     </td>
+    
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row  [style.max-heigth]="5" *matRowDef="let row; columns: displayedColumns;"  
+  
+  [ngClass]="{ 'selected': row === selected }"></tr>
+</table>
+<!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" color="primary"></mat-paginator> -->

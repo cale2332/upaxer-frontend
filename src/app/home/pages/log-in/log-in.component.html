@@ -1,0 +1,28 @@
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>{{'Login' | translate}}</mat-card-title>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="form">
+      <mat-card-content>
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>{{'UserName' | translate}}</mat-label>
+            <input matInput placeholder="" [formControl]="form.controls.userName" required>
+            <mat-error *ngIf="form.controls.userName.invalid">{{getErrorMessageUser()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>{{'Password' | translate}}</mat-label>
+            <input type="password" matInput placeholder="" [formControl]="form.controls.password"  required>
+            <mat-error *ngIf="form.controls.password.invalid">{{getErrorMessagePassword()}}</mat-error>
+        </mat-form-field>
+      </mat-card-content>
+      <button mat-stroked-button color="accent" class="btn-block"  (click)="login($event)" >{{'Submit' | translate}}</button>
+
+    </form>
+  </mat-card>
+  </div>
+
+

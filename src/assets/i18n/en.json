@@ -1,0 +1,10 @@
+{
+    "Login":"Login",
+    "Sitetitle": "Angular Multi Language Site",
+    "UserName": "Name",
+    "NameError": "I am sure you must have a name!",
+    "Email": "Email address",
+    "Password": "Password",
+    "Submit": "Submit",
+    "Profile":"Profile"
+}

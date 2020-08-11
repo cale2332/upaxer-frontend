@@ -1,0 +1,58 @@
+<h2 mat-dialog-title>{{catalogTitle}}</h2>
+<input type="hidden" value="" id="id">
+<mat-dialog-content class="mat-typography"> 
+<div >
+    <form class="example-form" [formGroup]="form">
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="" [formControl]="form.controls.name" required>
+            <mat-error *ngIf="form.controls.name.invalid">{{getErrorMessageName()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>Apellido Paterno</mat-label>
+            <input matInput placeholder="" [formControl]="form.controls.middleName" required>
+            <mat-error *ngIf="form.controls.middleName.invalid">{{getErrorMessageFirst()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>Apellido Materno</mat-label>
+            <input matInput placeholder="Apellido Materno" [formControl]="form.controls.lastName">
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>
+                Telefono
+            </mat-label>
+            <input matInput placeholder="Telefono" [formControl]="form.controls.phone">
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>
+                Email
+            </mat-label>
+            <input matInput placeholder="Email" [formControl]="form.controls.email">
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>
+                Telefono
+            </mat-label>
+            <!-- <input matInput placeholder="Telefono" [formControl]="form.controls.phone"> -->
+            <input matInput [matDatepicker]="picker"  [formControl]="form.controls.birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="standard" class="example-full-width">
+            <mat-label>
+                Nick
+            </mat-label>
+            <input matInput placeholder="Nick" [formControl]="form.controls.nickName">
+        </mat-form-field>
+            <mat-checkbox  class="example-full-width" [formControl]="form.controls.active">Activo</mat-checkbox>
+
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="save($event)" >Save</button>
+</mat-dialog-actions>
+  
